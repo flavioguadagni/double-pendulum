@@ -50,7 +50,7 @@ double-pendulum/
 - Phase-space views
 - Total energy and relative energy error plots
 - Static comparisons between trajectories
-- Notebook-friendly animations
+- Local interactive animations
 
 ### Learning pipeline
 
@@ -143,7 +143,46 @@ dataset = build_training_dataset(
 save_dataset(dataset, "neural_networks/data/double_pendulum_dataset.pt")
 ```
 
-### 3. Train a neural model
+### 3. Run animations locally
+
+The project also provides Matplotlib-based animation helpers:
+
+- `visualization.animate_solution(...)`
+- `visualization.animate_phase_space(...)`
+
+Example:
+
+```python
+from dynamics import load_config, solve_hamiltonian
+from visualization import animate_solution, animate_phase_space
+
+config = load_config("simulation_input_card.json")
+solution = solve_hamiltonian(config, method="rk4")
+
+animate_solution(solution, trail=200, show=True)
+animate_phase_space(solution, trail=200, view="trajectory", show=True)
+```
+
+Important:
+
+- These animations are intended for local interactive Python execution with a GUI-backed Matplotlib window.
+- Treat them as a CLI/local-script feature.
+- They do not work reliably inside Jupyter notebooks in the current project setup.
+- Use the static plotting functions inside `test_notebook.ipynb` instead.
+
+Typical way to run them from the command line:
+
+```bash
+python3.11
+```
+
+Then paste the example above into the Python session, or place it in a local script and run:
+
+```bash
+python3.11 your_script.py
+```
+
+### 4. Train a neural model
 
 ```python
 from neural_networks.training import load_dataset, train_vector_field_model, train_hnn_model
@@ -163,7 +202,7 @@ hnn_model, hnn_history = train_hnn_model(
 )
 ```
 
-### 4. Roll out a trained checkpoint
+### 5. Roll out a trained checkpoint
 
 ```python
 from dynamics import load_config
@@ -215,6 +254,8 @@ The main walkthrough is `test_notebook.ipynb`. It covers:
 6. Training the Hamiltonian neural network
 7. Comparing learned rollouts against physics-based solutions
 
+Animation is intentionally not part of the notebook workflow documented here. Use the animation helpers only from a local Python session or standalone script.
+
 ## Notes
 
 - The neural models operate in canonical coordinates ordered as `[theta1, p1, theta2, p2]`.
@@ -225,7 +266,5 @@ The main walkthrough is `test_notebook.ipynb`. It covers:
 ## Future Improvements
 
 - Add a `requirements.txt` or `pyproject.toml`
-- Add automated tests
 - Add command-line entry points for dataset generation and training
 - Add experiment tracking and result logging
-- Add benchmark comparisons between integrators and learned models
