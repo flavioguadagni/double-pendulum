@@ -18,7 +18,6 @@ The repository currently includes:
 double-pendulum/
 ├── README.md
 ├── .gitignore
-├── animated_pendulum.py
 ├── dynamics/
 │   ├── config.py
 │   ├── integrators.py
