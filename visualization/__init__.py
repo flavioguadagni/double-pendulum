@@ -8,6 +8,7 @@ from .plotting import (
     plot_phase_space,
     plot_relative_energy_error,
     plot_solution,
+    plot_comparison_relative_error,
 )
 
 __all__ = [
