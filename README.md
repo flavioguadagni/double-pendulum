@@ -228,17 +228,17 @@ plot_comparison(vf_solution, hnn_solution, label_a="Vector Field", label_b="HNN"
 
 Default simulation parameters live in `simulation_input_card.json`. The current example setup uses:
 
-- `m1 = 10.0`
-- `m2 = 5.0`
-- `L1 = 2.0`
-- `L2 = 1.0`
-- `g = 9.81`
-- `theta1_0 = pi / 2`
-- `theta2_0 = pi / 2 + 0.01`
-- `omega1_0 = 0.0`
-- `omega2_0 = 0.0`
-- `t_max = 10.0`
-- `dt = 0.01`
+- `m1 = 10.0`: mass of the first pendulum bob
+- `m2 = 5.0`: mass of the second pendulum bob
+- `L1 = 2.0`: length of the first rod
+- `L2 = 1.0`: length of the second rod
+- `g = 9.81`: gravitational acceleration
+- `theta1_0 = pi / 2`: initial angle of the first pendulum
+- `theta2_0 = pi / 2 + 0.01`: initial angle of the second pendulum
+- `omega1_0 = 0.0`: initial angular velocity of the first pendulum
+- `omega2_0 = 0.0`: initial angular velocity of the second pendulum
+- `t_max = 10.0`: total simulated physical time
+- `dt = 0.01`: integration time step used by the numerical solver
 
 You can either edit the JSON file or build a configuration in code with `dynamics.build_config(...)`.
 
