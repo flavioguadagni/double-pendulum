@@ -16,6 +16,9 @@ The repository currently includes:
 
 ```text
 double-pendulum/
+├── README.md
+├── .gitignore
+├── animated_pendulum.py
 ├── dynamics/
 │   ├── config.py
 │   ├── integrators.py
@@ -29,8 +32,14 @@ double-pendulum/
 │   ├── vector_field_nn.py
 │   ├── hamiltonian_nn.py
 │   ├── data/
+│   │   └── double_pendulum_dataset.pt
 │   └── checkpoints/
+│       ├── hamiltonian_nn.pt
+│       └── vector_field.pt
 ├── visualization/
+│   ├── __init__.py
+│   ├── animation.py
+│   └── plotting.py
 ├── simulation_input_card.json
 └── test_notebook.ipynb
 ```
